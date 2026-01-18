@@ -85,9 +85,10 @@ int main(int argc, char **argv)
                && read_value(patchfile.get(), &nummatches);
     check_read_result(result);
 
-    std::unique_ptr<uint32_t[], void(*)(void*)> copyloc1((uint32_t*)malloc(nummatches + 1), free),
-                                                copyloc2((uint32_t*)malloc(nummatches + 1), free),
-                                                copynum((uint32_t*)malloc(nummatches + 1), free);
+    const size_t alloc_size = sizeof(uint32_t) * (nummatches + 1);
+    std::unique_ptr<uint32_t[], void(*)(void*)> copyloc1((uint32_t*)malloc(alloc_size), free),
+                                                copyloc2((uint32_t*)malloc(alloc_size), free),
+                                                copynum((uint32_t*)malloc(alloc_size), free);
 
     for (unsigned i = 0; i < nummatches; ++i)
     {
