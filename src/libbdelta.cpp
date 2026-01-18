@@ -395,7 +395,7 @@ static void bdelta_pass_2(BDelta_Instance *b, uint32_t blocksize, uint32_t minMa
         return;
     }
 
-    Checksums_Instance h(blocksize, b->bdelta_pass_2_htable.size(), b->bdelta_pass_2_htable.get(), b->bdelta_pass_2_hchecksums.get());
+    Checksums_Instance h(blocksize, (unsigned)b->bdelta_pass_2_htable.size(), b->bdelta_pass_2_htable.get(), b->bdelta_pass_2_hchecksums.get());
 
     b->bdelta_pass_2_buf.resize(blocksize);
     if (!b->bdelta_pass_2_buf.resize(blocksize))
@@ -579,7 +579,7 @@ void bdelta_pass(BDelta_Instance *b, uint32_t blocksize, uint32_t minMatchSize, 
 
 unsigned bdelta_numMatches(BDelta_Instance *b) noexcept
 {
-    return b->matches.size();
+    return (unsigned)b->matches.size();
 }
 
 void bdelta_getMatch(BDelta_Instance *b, unsigned matchNum, unsigned *p1, unsigned *p2, unsigned *num) noexcept

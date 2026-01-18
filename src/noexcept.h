@@ -31,7 +31,7 @@ inline bool inplace_realloc(void * old_p, size_t new_size)
 
 // TODO: implement it for linux
 constexpr bool inplace_realloc(void * /*old_p*/, size_t /*new_size*/) { return false; }
-#endif _WIN32
+#endif // _WIN32
 
 template <class T>
 struct Construct

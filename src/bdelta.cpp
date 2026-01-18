@@ -29,22 +29,22 @@ static void my_pass(BDelta_Instance *b, unsigned blocksize, unsigned minMatchSiz
     switch (*bdelta_getError(b))
     {
     case BDELTA_MEM_ERROR:
-        printf(fatal_alloc);
+        printf("%s", fatal_alloc);
         exit(1);
     case BDELTA_READ_ERROR:
-        printf(fatal_read);
+        printf("%s", fatal_read);
         exit(2);
     case BDELTA_WRITE_ERROR:
-        printf(fatal_write);
+        printf("%s", fatal_write);
         exit(3);
     default:
         bdelta_clean_matches(b, BDELTA_REMOVE_OVERLAP);
     }
 }
 
-#define check_write_result(result) if(!(result)) { printf(fatal_read); return 3; }
-#define check_read_result(result) if(!(result)) { printf(fatal_write); return 2; }
-#define check_alloc(ptr) if (!(ptr)) { printf(fatal_alloc); exit(1); }
+#define check_write_result(result) if(!(result)) { printf("%s", fatal_read); return 3; }
+#define check_read_result(result) if(!(result)) { printf("%s", fatal_write); return 2; }
+#define check_alloc(ptr) if (!(ptr)) { printf("%s", fatal_alloc); exit(1); }
 
 int main(int argc, char **argv) 
 {
