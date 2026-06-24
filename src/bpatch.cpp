@@ -131,7 +131,7 @@ int main(int argc, char **argv)
             return -1;
         }
 
-        fseek(ref.get(), copyloc1[i], SEEK_CUR);
+        fseek(ref.get(), (int32_t)copyloc1[i], SEEK_CUR);
 
         if (!copy_bytes_to_file(ref.get(), outfile.get(), copynum[i]))
         {
